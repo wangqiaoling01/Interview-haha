@@ -1,0 +1,40 @@
+<!--
+ * @Description: Description
+ * @Version: 1.0
+ * @Autor: WangQiaoLing
+ * @Date: 2020-07-21 19:36:56
+ * @LastEditors: WangQiaoLing
+ * @LastEditTime: 2020-07-21 19:43:10
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 100%;
+        display: table;
+      }
+      .left {
+        width: 100px;
+        height: 200px;
+        display: table-cell;
+        background-color: aqua;
+      }
+      .right {
+        height: 200px;
+        width: calc(100% - 100px);
+        display: table-cell;
+        background-color: blueviolet;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="left">left</div>
+      <div class="right">right</div>
+    </div>
+  </body>
+</html>

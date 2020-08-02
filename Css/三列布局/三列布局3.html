@@ -1,0 +1,54 @@
+<!--
+ * @Description: Description
+ * @Version: 1.0
+ * @Autor: WangQiaoLing
+ * @Date: 2020-07-21 20:19:33
+ * @LastEditors: WangQiaoLing
+ * @LastEditTime: 2020-07-21 20:25:00
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        height: 300px;
+        margin-left: 200px;
+        margin-right: 200px;
+      }
+      .main,
+      .left,
+      .right {
+        height: 300px;
+        float: left;
+      }
+
+      .left,
+      .right {
+        width: 200px;
+        background-color: rebeccapurple;
+      }
+      .left {
+        margin-left: -100%;
+        position: relative;
+        left: -200px;
+      }
+      .right {
+        margin-right: -200px;
+      }
+      .main {
+        width: 100%;
+        background-color: royalblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="main">main</div>
+      <div class="left">left</div>
+      <div class="right">right</div>
+    </div>
+  </body>
+</html>
