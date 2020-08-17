@@ -18,7 +18,7 @@
 - 配置文件组成：
   - entry：入口，默认为./src/index.js
   - output：输出，默认为./dist/main/js
-  - mode
+  - mode：none、development、production
   - loader配置：module下的rules数组中
   - plugins：插件配置
 

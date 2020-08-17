@@ -4,7 +4,7 @@
  * @Autor: WangQiaoLing
  * @Date: 2020-08-02 20:38:43
  * @LastEditors: WangQiaoLing
- * @LastEditTime: 2020-08-03 10:40:30
+ * @LastEditTime: 2020-08-10 13:46:43
  */
 var climbStairs = function (n) {
   let cache = []
@@ -18,7 +18,7 @@ var climbStairs = function (n) {
   console.log(cache)
   return cache.pop()
 }
-console.log(climbStairs(2))
+// console.log(climbStairs(2))
 // let num1 = 0
 // let arr1 = [1, 2, 3]
 // arr1.reverse().map((item, index) => {
@@ -47,3 +47,14 @@ console.log(climbStairs(2))
 //   resLink = resLink.next
 // }
 // console.log(Number(null))
+// let a = [1]
+// let obj = { a: 1 }
+// let c = obj.a
+// function test(a) {
+//   a.push(2)
+//   obj['a'] = 2
+// }
+// test(a)
+// console.log(a)
+// console.log(obj)
+// console.log(c)

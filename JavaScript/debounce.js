@@ -4,7 +4,7 @@
  * @Autor: WangQiaoLing
  * @Date: 2020-07-21 10:26:31
  * @LastEditors: WangQiaoLing
- * @LastEditTime: 2020-07-21 10:28:02
+ * @LastEditTime: 2020-08-10 14:18:21
  */
 function debounce(fn, delay) {
   let timer = null
@@ -12,8 +12,9 @@ function debounce(fn, delay) {
     if (timer) {
       clearTimeout(timer)
     }
-    timer = setInterval(() => {
+    timer = setTimeout(() => {
       this.call(fn)
+      timer = null
     }, delay)
   }
 }

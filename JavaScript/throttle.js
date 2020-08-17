@@ -4,7 +4,7 @@
  * @Autor: WangQiaoLing
  * @Date: 2020-07-21 10:28:12
  * @LastEditors: WangQiaoLing
- * @LastEditTime: 2020-07-21 19:32:23
+ * @LastEditTime: 2020-08-10 14:18:38
  */
 function throttle(fn, delay) {
   let timer = null
@@ -14,6 +14,7 @@ function throttle(fn, delay) {
     }
     timer = setTimeout(() => {
       this.call(fn)
+      timer = null
     }, delay)
   }
 }

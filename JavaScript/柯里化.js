@@ -4,7 +4,7 @@
  * @Autor: WangQiaoLing
  * @Date: 2020-07-28 21:06:56
  * @LastEditors: WangQiaoLing
- * @LastEditTime: 2020-07-29 15:16:33
+ * @LastEditTime: 2020-08-10 13:12:09
  */
 function add() {
   let args = [...arguments]
@@ -20,7 +20,7 @@ function add() {
   }
   return innerAdd
 }
-// console.log(add(1)(2)(3).sumof())
+// console.log(add(1, 2)(2)(3).sumof())
 // console.log(add(0)(2)(3).mulof())
 
 function curry(fn, args) {
@@ -87,17 +87,17 @@ console.log(res, res2)
 //   const allArgs = [...args1, ...args2]
 //   return fn.length === allArgs ? fn(...allArgs) : curry1(fn, allArgs)
 // }
-let arr=[1,1,2,2]
-let res=arr.reduce((cur,prev)=>{
+// let arr=[1,1,2,2]
+// let res=arr.reduce((cur,prev)=>{
 
-  ​	if(!prev.includes(cur)){
-  
-  ​		prev.push(cur)
-  
-  }
-  
-  return prev
-  
-  },[])
+//   ​	if(!prev.includes(cur)){
 
-console.log(res);
+//   ​		prev.push(cur)
+
+//   }
+
+//   return prev
+
+//   },[])
+
+// console.log(res);
