@@ -1,11 +1,3 @@
-/*
- * @Description: Description
- * @Version: 1.0
- * @Autor: WangQiaoLing
- * @Date: 2020-07-28 13:02:17
- * @LastEditors: WangQiaoLing
- * @LastEditTime: 2020-08-01 16:47:38
- */
 Array.prototype.uniq = function () {
   var res = []
   var flag = true

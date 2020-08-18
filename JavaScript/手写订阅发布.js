@@ -6,19 +6,6 @@
  * @LastEditors: WangQiaoLing
  * @LastEditTime: 2020-08-15 12:38:28
  */
-/**
- *  @Description 一个消息中心：observers 用于存储每个订阅的回调函数
- *  @Description 一个订阅函数： on 用于往 消息中心写入对应频道的监听回调函数
- *  @Description 一个发布函数：trigger 发布消息， 触发对应频道的所有回调函数，并将数据作为	回调函数的参数 传给了订阅者
- */
-/**
- * @description: 发布 / 订阅模式的实现
- * @param {Object} observers 消息中心 用于存储每个订阅的回调函数
- * @param {Function} on 用于往消息中心写入对应频道的监听回调函数
- * @param {Function} trigger 发布消息，触发对应频道的所有回调函数，并将数据作为回调函数的参数,传给了订阅者
- * @return {type}
- * @author: WangQiaoLing
- */
 
 class EventEmitter {
   constructor() {

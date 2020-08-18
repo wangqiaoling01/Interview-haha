@@ -4,7 +4,7 @@
  * @Autor: WangQiaoLing
  * @Date: 2020-07-21 10:28:12
  * @LastEditors: WangQiaoLing
- * @LastEditTime: 2020-08-10 14:18:38
+ * @LastEditTime: 2020-08-18 13:28:23
  */
 function throttle(fn, delay) {
   let timer = null
