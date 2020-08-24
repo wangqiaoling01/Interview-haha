@@ -35,4 +35,27 @@ function quick_sort(nums) {
   }
   return quick_sort(left_nums).concat(mid_value, quick_sort(right_nums))
 }
-console.log(quick_sort([5, 6, 8, 9, 7]))
+// var sortColors = function (nums) {
+//   let ret = quick_sort(nums)
+//   console.log('ret', ret)
+// }
+
+var sortColors = function (nums) {
+  function quick_sort(nums) {
+    if (nums.length <= 1) {
+      return nums
+    }
+    const mid_index = Math.floor(nums.length / 2)
+    const mid_value = nums.splice(mid_index, 1)[0]
+    let left_nums = [],
+      right_nums = []
+    for (let i = 0; i < nums.length; i++) {
+      nums[i] > mid_value ? right_nums.push(nums[i]) : left_nums.push(nums[i])
+    }
+    return quick_sort(left_nums).concat(mid_value, quick_sort(right_nums))
+  }
+  let ret = quick_sort(nums)
+  console.log(ret)
+  return ret
+}
+sortColors([2, 0, 2, 1, 1, 0])
