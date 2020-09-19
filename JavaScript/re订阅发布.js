@@ -26,7 +26,7 @@ class EventEmitter {
   }
 }
 // 给 EventEmitter 的 type 添加事件
-EventEmitter.prototype.on = (type, ...fn) => {
+EventEmitter.prototype.on = function (type, ...fn) {
   let handler = this._events.get(type)
   if (!handler) {
     this._events.set(type, fn)
@@ -37,7 +37,7 @@ EventEmitter.prototype.on = (type, ...fn) => {
   }
 }
 // 触发 EventEmitter 的 type 事件
-EventEmitter.prototype.emit = (type, ...args) => {
+EventEmitter.prototype.emit = function (type, ...args) {
   let handler = this._events.get(type)
   if (Array.isArray(handler)) {
     // 一次触发其中的回调函数
@@ -51,11 +51,19 @@ EventEmitter.prototype.emit = (type, ...args) => {
 }
 
 // 删除
-EventEmitter.prototype.removeEvent = (type, fn) => {
-  const handler = this._events.get(type)
+EventEmitter.prototype.removeEvent = function (type, fn) {
+  const vm = this
+  // 如果没有传参，清空所有订阅
+  if (!arguments.length) {
+    vm._events = new Map()
+    return vm
+  }
+  const handler = vm._events.get(type)
   if (handler && typeof handler === 'function') {
-    this._events.delete(type)
+    // 只有一个
+    vm._events.delete(type)
   } else {
+    // events为数组时，循环执行
     let position
     for (let i = 0; i < handler.length; i++) {
       position = handler[i] === fn ? i : -1
@@ -63,11 +71,22 @@ EventEmitter.prototype.removeEvent = (type, fn) => {
     if (position !== -1) {
       handler.splice(position, 1)
       if (handler.length === 1) {
-        this._events.set(type, handler[0])
+        vm._events.set(type, handler[0])
       }
     } else {
       // 没找到
-      return this
+      return vm
     }
   }
+}
+
+EventEmitter.prototype.once = function (type, fn) {
+  const vm = this
+  function on() {
+    vm.removeEvent(type, fn)
+    fn.apply(vm, arguments)
+  }
+  on.fn = fn
+  vm.on(type, on)
+  return vm
 }

@@ -31,6 +31,15 @@ class EventEmitter {
   off(channel) {
     this.observers[channel] = null
   }
+  once(channel, f) {
+    const _this = this
+    function on() {
+      _this.off()
+      f.apply(_this, arguments)
+    }
+    on.f = f
+    _this.$on(channel, on)
+  }
 }
 // 其使用 方式如下
 var e = new EventEmitter()
