@@ -1,15 +1,22 @@
-rowCnt = 0
-i = 0
-str = 'This utility is a filter which displays the specified files, or the standard input, if no files are specified, in a user specifi'
-n = len(str)
-print(n)  # str 的长度
-while i < n:
-    row16 = str[i:i+16]  # 从第i个取16个
-    row16_to_int = [ord(c) for c in row16]  # 将 row16 的每个转成对应的十进制整数。
-    print('%8x' % i, end=' ')  # 输出
-    for j in range(16):
-        print('%x' % row16_to_int[j], end=' ')
-    print(row16)
+dis = [2, 2, 6, 5, 4]
+dian = [6, 3, 5, 4, 6]
+total_dis = 10
+n = len(dis)
+dp = [[0]*(total_dis+1)]*n
+print(len(dp))
+for i in range(n):
+    for j in range(total_dis+1):
+        if i == 0:
+            if j < dis[i]:
+                dp[i][j] = 0
 
-    rowCnt += 1
-    i += 16
+            else:
+                dp[i][j] = dian[i]
+        else:
+            if j < dis[i]:
+                dp[i][j] = dp[i-1][j]
+
+            else:
+                dp[i][j] = max(dp[i-1][j], dp[i-1][j-dis[i]]+dian[i])
+print(dp)
+print(dp[n-1][total_dis])
