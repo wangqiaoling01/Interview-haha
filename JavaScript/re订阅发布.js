@@ -46,7 +46,7 @@ EventEmitter.prototype.emit = function (type, ...args) {
     }
   } else {
     // 单个函数
-    fn(args)
+    handler(args)
   }
 }
 
