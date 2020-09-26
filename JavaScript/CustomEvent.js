@@ -1,11 +1,9 @@
 /**
  * @description 自定义事件（暂时无用，有谁需要用时，一定要联系作者确认！！！）
- * @author wangfupeng
+ * @author
  */
-
 class CustomEvent {
   // 如 'change': [fn1, fn2, fn3]
-  // private events: Map<string, Function[]>
 
   constructor() {
     this.events = new Map()
@@ -41,12 +39,16 @@ class CustomEvent {
       events.set(type, [])
       return
     }
-
+    let i = handler.length
+    while (i--) {
+      const cb = handle[i]
+      if (cb === fn || cb.fn === fn) {
+        handle.splice(i, 1)
+        break
+      }
+    }
     // 解绑某个事件：将这个事件从回调数组中过滤掉
-    events.set(
-      type,
-      handler.filter((f) => f !== fn)
-    )
+    events.set(type, handler)
   }
 
   /**
@@ -56,39 +58,42 @@ class CustomEvent {
   emit(type, ...args) {
     const events = this.events
     const handler = events.get(type)
-    console.log('handler:', handler)
+
     if (handler && handler.length !== 0) {
       handler.forEach((fn) => fn(args))
     } else {
-      console.log(`没有这个`, handler)
+      events.set(type, [])
+      return
     }
   }
 
+  /**
+   *
+   * @param type
+   * @param fn
+   */
   once(type, fn) {
     const self = this
     function _on(...args) {
       self.off(type, _on) // 解绑
-      // fn.apply(self, args) // 绑定this
-      fn(args)
+      fn(args) // 执行 fn
     }
-    // _on.fn = fn
+    _on.fn = fn // 给 _on 赋静态属性 fn，便于对 once 事件进行手动 off 的情况进行判断
     this.on(type, _on)
   }
 }
 
-const a = []
+const ce = new CustomEvent()
+const list = []
 function A() {
-  a.push(1)
+  list.push(1)
 }
-const test = new CustomEvent()
-test.once('a', A)
-// test.on('b', A('b被触发'))
 
-test.emit('a')
-console.log(a)
-test.emit('a')
-console.log(a)
-// test.emit('a')
-// test.emit('a')
-// test.emit('b')
-// test.emit('b')
+// ce.on('a', A)
+// ce.emit('a')
+
+ce.once('b', A)
+ce.off('b')
+ce.emit('b')
+ce.emit('b')
+console.log(list)
